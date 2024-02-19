@@ -40,7 +40,7 @@ double InflationFormula1(double& P1, double& P2)
 
 double InflationFormula2(double& P2, double& P3)
 {
-	double Inflation2 = ((P3 - P1) / P3);
+	double Inflation2 = ((P3 - P2) / P3);
 
 	return Inflation2;
 }
