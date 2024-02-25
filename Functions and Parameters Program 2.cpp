@@ -1,46 +1,47 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
-double CurrentPrice, LastYearPrice, TwoYearsAgoPrice;
-
-double InflationFormula1(double& P1, double& P2);
-double InflationFormula2(double& P2, double& P3);
+void UserInput(double& P1, double& P2, double& P3);
+void InflationFormula1Year(double& P1, double& P2);
+void InflationFormula2Years(double& P2, double& P3);
 
 int main()
 {
-	cout << "Please enter the current item price: ";
-		cin >> CurrentPrice;
+	double CurrentPrice, LastYearPrice, TwoYearsAgoPrice;
 
-	cout << "\nPlease enter the price from a year ago: ";
-		cin >> LastYearPrice;
+	UserInput(CurrentPrice, LastYearPrice, TwoYearsAgoPrice);
 
-	cout << "\nPleast enter the price from two years ago: ";
-		cin >> TwoYearsAgoPrice;
-
-	cout << "Current Price: " << CurrentPrice << endl;
-
-	cout << "\nPrice one year ago: " << LastYearPrice << endl;
-
-	cout << "\nPrice two years ago: " << TwoYearsAgoPrice << endl;
-
-	cout << "\nCurrent inflation: " << endl;
-
-	cout << "\nInflation Over Two Years: " << endl;
+	InflationFormula1Year(CurrentPrice, LastYearPrice); 
+	
+	InflationFormula2Years(LastYearPrice, TwoYearsAgoPrice);
 
 	return 0;
 }
 
-double InflationFormula1(double& P1, double& P2)
+void UserInput(double& P1, double& P2, double& P3)
 {
-	double Inflation1 = ((P2 - P1) / P2);
+	cout << "Please enter the current item price: ";
+	cin >> P1;
 
-	return Inflation1;
+	cout << "\nPlease enter the price from a year ago: ";
+	cin >> P2;
+
+	cout << "\nPlease enter the price from two years ago: ";
+	cin >> P3;
 }
 
-double InflationFormula2(double& P2, double& P3)
+void InflationFormula1Year(double& P1, double& P2)
 {
-	double Inflation2 = ((P3 - P2) / P3);
+	double Inflation = (((P2 - P1) / P1) * 100);
 
-	return Inflation2;
+	cout << "\nCurrent inflation: " << setprecision(2) << fixed << Inflation << "%" << endl;
+}
+
+void InflationFormula2Years(double& P2, double& P3)
+{
+	double Inflation = (((P3 - P2) / P2) * 100);
+
+	cout << "\nInflation Over Two Years: " << setprecision(2) << fixed << Inflation << "%" << endl;
 }
