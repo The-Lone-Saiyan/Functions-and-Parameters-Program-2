@@ -52,8 +52,8 @@ void InflationFormula(double& P1, double& P2, double& P3)
 void InflationOutput(double& Inflation, double& Inflation2)
 {
 	double P1, P2, P3;
-	
-	cout << "\nCurrent inflation: " << setprecision(2) << fixed << InflationFormula(P1, P2, P3) << "%" << endl;
 	InflationFormula(P1, P2, P3);
+	cout << "\nCurrent inflation: " << setprecision(2) << fixed << Inflation << "%" << endl;
+	
 	cout << "\nInflation Over Two Years: " << setprecision(2) << fixed << Inflation2 << "%" << endl;
 }
